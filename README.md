@@ -3,8 +3,8 @@
 ## Description
 
 The `byd_vehicle` integration connects Home Assistant to the BYD cloud service
-using the pybyd library. It adds sensors for vehicle telemetry and energy data,
-GPS tracking, and basic remote commands.
+using the [pyBYD](https://github.com/jkaberg/pyBYD) library. It adds sensors for
+vehicle telemetry and energy data, GPS tracking, and basic remote commands.
 
 ## Installation
 
@@ -43,12 +43,9 @@ search for "BYD Vehicle".
 | Username | string | yes | BYD account username (email or phone). |
 | Password | string | yes | BYD account password. |
 | Region | string | yes | API region endpoint (Europe or Australia). |
-| Country code | string | yes | ISO country code used for API requests. |
+| Country | string | yes | Country selection used for API country code and language. |
 | Poll interval | int | no | Telemetry polling interval in seconds. |
 | GPS poll interval | int | no | GPS polling interval in seconds. |
-
-The integration uses the Home Assistant time zone and derives language from the
-selected country code.
 
 ## Entities
 
