@@ -15,6 +15,7 @@ from pybyd import (
     BydAuthenticationError,
     BydClient,
     BydRemoteControlError,
+    BydSessionExpiredError,
     BydTransportError,
     RemoteControlResult,
 )
@@ -44,7 +45,7 @@ class BydApi:
     def __init__(self, hass: HomeAssistant, entry: ConfigEntry, session: Any) -> None:
         self._hass = hass
         self._entry = entry
-        self._session = session
+        self._http_session = session
         time_zone = hass.config.time_zone or "UTC"
         device = DeviceProfile(**entry.data[CONF_DEVICE_PROFILE])
         self._config = BydConfig(
@@ -58,6 +59,7 @@ class BydApi:
             control_pin=entry.data.get(CONF_CONTROL_PIN) or None,
         )
         self._last_remote_results: dict[tuple[str, str], dict[str, Any]] = {}
+        self._client: BydClient | None = None
 
     @property
     def config(self) -> BydConfig:
@@ -93,6 +95,28 @@ class BydApi:
             data["error_type"] = type(error).__name__
         self._last_remote_results[(vin, command)] = data
 
+    async def _ensure_client(self) -> BydClient:
+        """Return a ready-to-use client, creating one if needed.
+
+        The client's own ``ensure_session()`` handles login and token
+        expiry transparently — we only manage the transport lifecycle.
+        """
+        if self._client is None:
+            self._client = BydClient(
+                self._config, session=self._http_session
+            )
+            await self._client.__aenter__()
+        return self._client
+
+    async def _invalidate_client(self) -> None:
+        """Tear down the current client so the next call creates a fresh one."""
+        if self._client is not None:
+            try:
+                await self._client.__aexit__(None, None, None)
+            except Exception:  # noqa: BLE001
+                pass
+            self._client = None
+
     async def async_call(
         self,
         handler: Any,
@@ -100,18 +124,29 @@ class BydApi:
         vin: str | None = None,
         command: str | None = None,
     ) -> Any:
+        """Execute *handler(client)* with automatic session management.
+
+        The pybyd client handles login and session-expiry retries
+        internally via ``ensure_session()``.  We only need to recreate
+        the client on hard transport failures.
+        """
         try:
-            async with BydClient(self._config, session=self._session) as client:
-                await client.login()
-                result = await handler(client)
-                if isinstance(result, RemoteControlResult) and vin and command:
-                    self._store_remote_result(vin, command, result)
-                return result
+            client = await self._ensure_client()
+            result = await handler(client)
+            if isinstance(result, RemoteControlResult) and vin and command:
+                self._store_remote_result(vin, command, result)
+            return result
         except BydRemoteControlError as exc:
             if vin and command:
                 self._store_remote_result(vin, command, None, exc)
             raise UpdateFailed(str(exc)) from exc
-        except (BydAuthenticationError, BydApiError, BydTransportError) as exc:
+        except BydTransportError as exc:
+            if vin and command:
+                self._store_remote_result(vin, command, None, exc)
+            # Hard transport error — tear down so next call reconnects
+            await self._invalidate_client()
+            raise UpdateFailed(str(exc)) from exc
+        except (BydAuthenticationError, BydApiError) as exc:
             if vin and command:
                 self._store_remote_result(vin, command, None, exc)
             raise UpdateFailed(str(exc)) from exc
@@ -228,14 +263,22 @@ class BydGpsUpdateCoordinator(DataUpdateCoordinator[dict[str, Any]]):
     def _is_any_vehicle_online(self) -> bool:
         """Check if any vehicle reports online_state == 1 from telemetry data."""
         if self._telemetry_coordinator is None:
+            _LOGGER.debug("Smart GPS: no telemetry coordinator available")
             return False
         data = self._telemetry_coordinator.data
         if not data or "realtime" not in data:
+            _LOGGER.debug("Smart GPS: no realtime data available yet")
             return False
-        for realtime in data["realtime"].values():
+        for vin, realtime in data["realtime"].items():
             if realtime is None:
                 continue
             online = getattr(realtime, "online_state", None)
+            _LOGGER.debug(
+                "Smart GPS: VIN %s online_state=%s (is_online=%s)",
+                vin[-6:],
+                online,
+                getattr(realtime, "is_online", "N/A"),
+            )
             if online == 1:
                 return True
         return False
@@ -247,9 +290,10 @@ class BydGpsUpdateCoordinator(DataUpdateCoordinator[dict[str, Any]]):
         is_online = self._is_any_vehicle_online()
         new_interval = self._active_interval if is_online else self._inactive_interval
         if self.update_interval != new_interval:
-            _LOGGER.debug(
-                "Smart GPS polling: vehicle %s, interval set to %ss",
+            _LOGGER.info(
+                "Smart GPS polling: vehicle %s, interval %ss -> %ss",
                 "online" if is_online else "offline",
+                self.update_interval.total_seconds(),
                 new_interval.total_seconds(),
             )
             self.update_interval = new_interval

@@ -74,7 +74,11 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
 
     await hass.config_entries.async_forward_entry_setups(entry, PLATFORMS)
 
+    async def _async_cleanup(_: ConfigEntry) -> None:
+        await api._invalidate_client()
+
     entry.async_on_unload(entry.add_update_listener(async_reload_entry))
+    entry.async_on_unload(lambda: hass.async_create_task(_async_cleanup(entry)))
     return True
 
 
