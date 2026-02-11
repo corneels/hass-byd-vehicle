@@ -16,13 +16,19 @@ from .const import (
     BASE_URLS,
     CONF_BASE_URL,
     CONF_COUNTRY_CODE,
+    CONF_GPS_ACTIVE_INTERVAL,
+    CONF_GPS_INACTIVE_INTERVAL,
     CONF_GPS_POLL_INTERVAL,
     CONF_LANGUAGE,
     CONF_POLL_INTERVAL,
+    CONF_SMART_GPS_POLLING,
     COUNTRY_OPTIONS,
     DEFAULT_COUNTRY,
+    DEFAULT_GPS_ACTIVE_INTERVAL,
+    DEFAULT_GPS_INACTIVE_INTERVAL,
     DEFAULT_GPS_POLL_INTERVAL,
     DEFAULT_POLL_INTERVAL,
+    DEFAULT_SMART_GPS_POLLING,
     DOMAIN,
 )
 
@@ -87,6 +93,13 @@ class BydVehicleConfigFlow(config_entries.ConfigFlow):
                     options={
                         CONF_POLL_INTERVAL: user_input[CONF_POLL_INTERVAL],
                         CONF_GPS_POLL_INTERVAL: user_input[CONF_GPS_POLL_INTERVAL],
+                        CONF_SMART_GPS_POLLING: user_input[CONF_SMART_GPS_POLLING],
+                        CONF_GPS_ACTIVE_INTERVAL: user_input[
+                            CONF_GPS_ACTIVE_INTERVAL
+                        ],
+                        CONF_GPS_INACTIVE_INTERVAL: user_input[
+                            CONF_GPS_INACTIVE_INTERVAL
+                        ],
                     },
                 )
 
@@ -102,6 +115,15 @@ class BydVehicleConfigFlow(config_entries.ConfigFlow):
                 vol.Optional(CONF_POLL_INTERVAL, default=DEFAULT_POLL_INTERVAL): int,
                 vol.Optional(
                     CONF_GPS_POLL_INTERVAL, default=DEFAULT_GPS_POLL_INTERVAL
+                ): int,
+                vol.Optional(
+                    CONF_SMART_GPS_POLLING, default=DEFAULT_SMART_GPS_POLLING
+                ): bool,
+                vol.Optional(
+                    CONF_GPS_ACTIVE_INTERVAL, default=DEFAULT_GPS_ACTIVE_INTERVAL
+                ): int,
+                vol.Optional(
+                    CONF_GPS_INACTIVE_INTERVAL, default=DEFAULT_GPS_INACTIVE_INTERVAL
                 ): int,
             }
         )
@@ -145,6 +167,24 @@ class BydVehicleOptionsFlow(config_entries.OptionsFlow):
                     CONF_GPS_POLL_INTERVAL,
                     default=self._config_entry.options.get(
                         CONF_GPS_POLL_INTERVAL, DEFAULT_GPS_POLL_INTERVAL
+                    ),
+                ): int,
+                vol.Optional(
+                    CONF_SMART_GPS_POLLING,
+                    default=self._config_entry.options.get(
+                        CONF_SMART_GPS_POLLING, DEFAULT_SMART_GPS_POLLING
+                    ),
+                ): bool,
+                vol.Optional(
+                    CONF_GPS_ACTIVE_INTERVAL,
+                    default=self._config_entry.options.get(
+                        CONF_GPS_ACTIVE_INTERVAL, DEFAULT_GPS_ACTIVE_INTERVAL
+                    ),
+                ): int,
+                vol.Optional(
+                    CONF_GPS_INACTIVE_INTERVAL,
+                    default=self._config_entry.options.get(
+                        CONF_GPS_INACTIVE_INTERVAL, DEFAULT_GPS_INACTIVE_INTERVAL
                     ),
                 ): int,
             }

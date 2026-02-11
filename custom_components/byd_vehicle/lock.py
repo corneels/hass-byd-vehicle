@@ -12,6 +12,8 @@ from homeassistant.helpers.entity import DeviceInfo
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
 
+from pybyd.models.realtime import LockState
+
 from .const import DOMAIN
 from .coordinator import BydApi, BydDataUpdateCoordinator, get_vehicle_display
 
@@ -37,8 +39,6 @@ async def async_setup_entry(
 class BydLock(CoordinatorEntity, LockEntity):
     """Representation of BYD lock control."""
 
-    _attr_assumed_state = True
-
     def __init__(
         self,
         coordinator: BydDataUpdateCoordinator,
@@ -52,17 +52,50 @@ class BydLock(CoordinatorEntity, LockEntity):
         self._vehicle = vehicle
         self._attr_unique_id = f"{vin}_lock"
         self._attr_name = f"{get_vehicle_display(vehicle)} lock"
+        self._last_command: str | None = None
+        self._last_locked: bool | None = None
+
+    def _get_realtime_locks(self) -> list[bool] | None:
+        realtime_map = self.coordinator.data.get("realtime", {})
+        realtime = realtime_map.get(self._vin)
+        if realtime is None:
+            return None
+
+        lock_values: list[LockState | None] = [
+            getattr(realtime, "left_front_door_lock", None),
+            getattr(realtime, "right_front_door_lock", None),
+            getattr(realtime, "left_rear_door_lock", None),
+            getattr(realtime, "right_rear_door_lock", None),
+        ]
+        parsed: list[bool] = []
+        for value in lock_values:
+            if value is None:
+                return None
+            parsed.append(value == LockState.LOCKED)
+        return parsed
 
     @property
     def is_locked(self) -> bool | None:
-        return None
+        parsed = self._get_realtime_locks()
+        if parsed is not None:
+            return all(parsed)
+        return self._last_locked
+
+    @property
+    def assumed_state(self) -> bool:
+        parsed = self._get_realtime_locks()
+        return parsed is None
 
     async def async_lock(self, **_: Any) -> None:
         async def _call(client: Any) -> Any:
             return await client.lock(self._vin)
 
         try:
-            await self._api.async_call(_call)
+            self._last_command = "lock"
+            self._last_locked = True
+            await self._api.async_call(
+                _call, vin=self._vin, command=self._last_command
+            )
         except Exception as exc:  # noqa: BLE001
             raise HomeAssistantError(str(exc)) from exc
 
@@ -71,9 +104,25 @@ class BydLock(CoordinatorEntity, LockEntity):
             return await client.unlock(self._vin)
 
         try:
-            await self._api.async_call(_call)
+            self._last_command = "unlock"
+            self._last_locked = False
+            await self._api.async_call(
+                _call, vin=self._vin, command=self._last_command
+            )
         except Exception as exc:  # noqa: BLE001
             raise HomeAssistantError(str(exc)) from exc
+
+    @property
+    def extra_state_attributes(self) -> dict[str, Any]:
+        attrs: dict[str, Any] = {"vin": self._vin}
+        if self._last_command:
+            attrs["last_remote_command"] = self._last_command
+            last_result = self._api.get_last_remote_result(
+                self._vin, self._last_command
+            )
+            if last_result:
+                attrs["last_remote_result"] = last_result
+        return attrs
 
     @property
     def device_info(self) -> DeviceInfo:

@@ -10,7 +10,10 @@
           "password": "Password",
           "country_code": "Country",
           "poll_interval": "Polling interval (seconds)",
-          "gps_poll_interval": "GPS polling interval (seconds)"
+          "gps_poll_interval": "GPS polling interval (seconds)",
+          "smart_gps_polling": "Smart GPS polling",
+          "gps_active_interval": "GPS active interval (seconds)",
+          "gps_inactive_interval": "GPS inactive interval (seconds)"
         }
       }
     },
@@ -26,7 +29,10 @@
         "title": "Update polling",
         "data": {
           "poll_interval": "Polling interval (seconds)",
-          "gps_poll_interval": "GPS polling interval (seconds)"
+          "gps_poll_interval": "GPS polling interval (seconds)",
+          "smart_gps_polling": "Smart GPS polling",
+          "gps_active_interval": "GPS active interval (seconds)",
+          "gps_inactive_interval": "GPS inactive interval (seconds)"
         }
       }
     }

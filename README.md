@@ -50,10 +50,14 @@ search for "BYD Vehicle".
 ## Entities
 
 - Sensors for vehicle, realtime, energy, and GPS fields
+- Explicit sensors for battery, range, cabin temperature, tire pressure, GPS speed/direction, and energy consumption
 - Device tracker for vehicle location
 - Climate (start/stop)
 - Lock (lock/unlock)
 - Switches for flash lights and horn
+
+Remote commands (climate, lock, switches) expose the latest remote control
+result in entity attributes.
 
 ## Notes
 

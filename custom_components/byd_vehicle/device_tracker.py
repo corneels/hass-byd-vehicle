@@ -59,6 +59,16 @@ class BydDeviceTracker(CoordinatorEntity, TrackerEntity):
         return SOURCE_TYPE_GPS
 
     @property
+    def extra_state_attributes(self) -> dict[str, Any]:
+        gps = self.coordinator.data.get("gps", {}).get(self._vin)
+        return {
+            "vin": self._vin,
+            "gps_speed": getattr(gps, "speed", None) if gps else None,
+            "gps_direction": getattr(gps, "direction", None) if gps else None,
+            "gps_timestamp": getattr(gps, "gps_timestamp", None) if gps else None,
+        }
+
+    @property
     def device_info(self) -> DeviceInfo:
         return DeviceInfo(
             identifiers={(DOMAIN, self._vin)},
