@@ -242,9 +242,11 @@ class BydClimate(CoordinatorEntity, ClimateEntity):
             attrs["passenger_set_temperature"] = (
                 self._scale_to_celsius(hvac.copilot_setting_temp_new)
                 if hvac.copilot_setting_temp_new is not None
-                else self._scale_to_celsius(hvac.copilot_setting_temp)
-                if hvac.copilot_setting_temp is not None
-                else None
+                else (
+                    self._scale_to_celsius(hvac.copilot_setting_temp)
+                    if hvac.copilot_setting_temp is not None
+                    else None
+                )
             )
             # Airflow
             attrs["fan_speed"] = hvac.wind_mode

@@ -103,9 +103,7 @@ class BydApi:
         expiry transparently — we only manage the transport lifecycle.
         """
         if self._client is None:
-            self._client = BydClient(
-                self._config, session=self._http_session
-            )
+            self._client = BydClient(self._config, session=self._http_session)
             await self._client.__aenter__()
         return self._client
 
@@ -240,9 +238,7 @@ class BydDataUpdateCoordinator(DataUpdateCoordinator[dict[str, Any]]):
             if vehicle_map and not any(
                 [realtime_map, energy_map, hvac_map, charging_map]
             ):
-                raise UpdateFailed(
-                    "All telemetry fetches failed for all vehicles"
-                )
+                raise UpdateFailed("All telemetry fetches failed for all vehicles")
 
             return {
                 "vehicles": vehicle_map,
@@ -339,9 +335,7 @@ class BydGpsUpdateCoordinator(DataUpdateCoordinator[dict[str, Any]]):
                     gps_map[vin] = gps
 
             if vehicle_map and not gps_map:
-                raise UpdateFailed(
-                    "GPS fetch failed for all vehicles"
-                )
+                raise UpdateFailed("GPS fetch failed for all vehicles")
 
             return {
                 "vehicles": vehicle_map,

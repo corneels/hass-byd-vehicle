@@ -17,8 +17,8 @@ from pybyd.models.hvac import HvacStatus
 from .const import DOMAIN
 from .coordinator import BydApi, BydDataUpdateCoordinator, get_vehicle_display
 
-SEAT_LEVEL_OPTIONS = ["Off", "Low", "Medium", "High"]
-SEAT_LEVEL_TO_INT = {"Off": 0, "Low": 1, "Medium": 2, "High": 3}
+SEAT_LEVEL_OPTIONS = ["Off", "Low", "High"]
+SEAT_LEVEL_TO_INT = {"Off": 0, "Low": 1, "High": 3}
 INT_TO_SEAT_LEVEL = {v: k for k, v in SEAT_LEVEL_TO_INT.items()}
 
 
@@ -50,6 +50,7 @@ def _seat_status_to_option(value: Any) -> str | None:
         return None
     level = _seat_status_to_command_level(value)
     return INT_TO_SEAT_LEVEL.get(level, "Off")
+
 
 # Mapping from param_key → HvacStatus attribute name
 _PARAM_TO_HVAC_ATTR: dict[str, str] = {
@@ -158,7 +159,9 @@ def _gather_seat_climate_state(
         sw_val = getattr(hvac, "steering_wheel_heat_state", None)
     if sw_val is None and realtime is not None:
         sw_val = getattr(realtime, "steering_wheel_heat_state", None)
-    values["steering_wheel_heat"] = 1 if _seat_status_to_command_level(sw_val) > 0 else 0
+    values["steering_wheel_heat"] = (
+        1 if _seat_status_to_command_level(sw_val) > 0 else 0
+    )
 
     return values
 
