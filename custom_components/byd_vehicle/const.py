@@ -49,6 +49,14 @@ BASE_URLS: dict[str, str] = {
     "Uzbekistan": "https://dilinkappoversea-uz.byd.auto",
     "Middle East/Africa": "https://dilinkappoversea-no.byd.auto",
     "Mexico/Latin America": "https://dilinkappoversea-mx.byd.auto",
+    "Indonesia": "https://dilinkappoversea-id.byd.auto",
+    "Turkey": "https://dilinkappoversea-tr.byd.auto",
+    "Korea": "https://dilinkappoversea-kr.byd.auto",
+    "India": "https://dilinkappoversea-in.byd.auto",
+    "Vietnam": "https://dilinkappoversea-vn.byd.auto",
+    "Saudi Arabia": "https://dilinkappoversea-sa.byd.auto",
+    "Oman": "https://dilinkappoversea-om.byd.auto",
+    "Kazakhstan": "https://dilinkappoversea-kz.byd.auto",
 }
 
 COUNTRY_OPTIONS: dict[str, tuple[str, str]] = {
