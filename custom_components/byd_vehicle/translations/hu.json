@@ -2,7 +2,7 @@
   "config": {
     "step": {
       "user": {
-        "title": "Csatlakozás a következőhöz: BYD",
+        "title": "Csatlakozás a BYD-hez",
         "description": "Állítsa be a BYD fiókját.",
         "data": {
           "base_url": "Régió",
@@ -33,7 +33,7 @@
   "options": {
     "step": {
       "init": {
-        "title": "Szavazás frissítése",
+        "title": "Lekérdezés frissítése",
         "data": {
           "poll_interval": "Lekérdezési intervallum (másodperc)",
           "gps_poll_interval": "GPS lekérdezési intervallum (másodperc)",
@@ -95,7 +95,7 @@
         "name": "Az akkumulátor töltöttségi szintje"
       },
       "ev_endurance": {
-        "name": "EV kitartás"
+        "name": "EV hatótáv"
       },
       "endurance_mileage_v2": {
         "name": "Tartomány V2"
@@ -104,7 +104,7 @@
         "name": "Kilométerszámláló V2"
       },
       "power_gear": {
-        "name": "Fogaskerék helyzete"
+        "name": "Fokozatválasztó pozíció"
       },
       "charging_state": {
         "name": "Töltési állapot"
@@ -116,16 +116,16 @@
         "name": "Töltési várakozási állapot"
       },
       "full_hour": {
-        "name": "Órák a teljes"
+        "name": "Órák a telítődésig"
       },
       "full_minute": {
-        "name": "Percek megtelt"
+        "name": "Percek a telítődésig"
       },
       "charge_remaining_hours": {
-        "name": "Töltse fel a fennmaradó órákat"
+        "name": "Hátralévő töltési órák"
       },
       "charge_remaining_minutes": {
-        "name": "Töltse fel a fennmaradó perceket"
+        "name": "Hátralévő töltési percek"
       },
       "booking_charge_state": {
         "name": "Ütemezett töltés"
@@ -188,7 +188,7 @@
         "name": "ABS figyelmeztetés"
       },
       "svs": {
-        "name": "Szerviz jármű hamarosan"
+        "name": "Szerviz szükséges hamarosan"
       },
       "srs": {
         "name": "Légzsák figyelmeztetés"
@@ -215,7 +215,7 @@
         "name": "Töltő csatlakozási állapota"
       },
       "charging_update_time": {
-        "name": "Az utolsó frissítés töltése"
+        "name": "Töltés utolsó frissítése"
       },
       "electricity_consumption": {
         "name": "Villamosenergia fogyasztás"
@@ -265,7 +265,7 @@
         "name": "Jobb hátsó ajtó"
       },
       "trunk_lid": {
-        "name": "Törzs"
+        "name": "Csomagtartó"
       },
       "sliding_door": {
         "name": "Tolóajtó"
@@ -315,10 +315,10 @@
     },
     "button": {
       "flash_lights": {
-        "name": "Villanófények"
+        "name": "Fényjel"
       },
       "find_car": {
-        "name": "Keressen autót"
+        "name": "Autó keresése"
       },
       "close_windows": {
         "name": "Zárja be az ablakokat"

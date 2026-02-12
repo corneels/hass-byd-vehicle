@@ -277,7 +277,7 @@
         "name": "Raam linksvoor"
       },
       "right_front_window": {
-        "name": "Rechtsvoor raam"
+        "name": "Raam rechtsvoor"
       },
       "left_rear_window": {
         "name": "Linker achterraam"
@@ -321,7 +321,7 @@
         "name": "Vind auto"
       },
       "close_windows": {
-        "name": "Sluit vensters"
+        "name": "Sluit ramen"
       }
     },
     "select": {
@@ -408,7 +408,7 @@
           "preset_mode": {
             "state": {
               "max_heat": "Maximale warmte",
-              "max_cool": "Maximaal cool"
+              "max_cool": "Maximale koeling"
             }
           }
         }

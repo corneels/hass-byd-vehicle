@@ -8,7 +8,7 @@
           "base_url": "Region",
           "username": "Benutzername",
           "password": "Passwort",
-          "control_pin": "Steuerelement PIN (optional, 6-stellig)",
+          "control_pin": "Steuerungs-PIN (optional, 6-stellig)",
           "country_code": "Land",
           "poll_interval": "Abfrageintervall (Sekunden)",
           "gps_poll_interval": "GPS Abfrageintervall (Sekunden)",
@@ -20,7 +20,7 @@
     },
     "error": {
       "cannot_connect": "Verbindung konnte nicht hergestellt werden",
-      "invalid_control_pin": "Ungültige Steuerung PIN oder Cloud-Steuerung ist vorübergehend gesperrt",
+      "invalid_control_pin": "Ungültiger Steuerungs-PIN oder Cloud-Steuerung ist vorübergehend gesperrt",
       "invalid_auth": "Ungültige Authentifizierung",
       "unknown": "Unerwarteter Fehler"
     },
@@ -116,10 +116,10 @@
         "name": "Ladewartestatus"
       },
       "full_hour": {
-        "name": "Stunden zu voll"
+        "name": "Stunden bis voll"
       },
       "full_minute": {
-        "name": "Minuten zu voll"
+        "name": "Minuten bis voll"
       },
       "charge_remaining_hours": {
         "name": "Verbleibende Ladezeit (Stunden)"
@@ -307,7 +307,7 @@
         "name": "Batterieheizung"
       },
       "charge_heat_state": {
-        "name": "Ladungsheizung"
+        "name": "Ladeheizung"
       },
       "vehicle_state": {
         "name": "Fahrzeug an"
@@ -315,7 +315,7 @@
     },
     "button": {
       "flash_lights": {
-        "name": "Blitzlichter"
+        "name": "Lichthupe"
       },
       "find_car": {
         "name": "Auto finden"
@@ -407,7 +407,7 @@
         "state_attributes": {
           "preset_mode": {
             "state": {
-              "max_heat": "Maximale Hitze",
+              "max_heat": "Max. Heizung",
               "max_cool": "Maximale Kühlung"
             }
           }

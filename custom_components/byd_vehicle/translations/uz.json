@@ -10,8 +10,8 @@
           "password": "Parol",
           "control_pin": "Boshqarish PIN (ixtiyoriy, 6-raqamli)",
           "country_code": "Mamlakat",
-          "poll_interval": "Ovoz berish oralig'i (sekundlar)",
-          "gps_poll_interval": "GPS ovoz berish oralig'i (sekundlar)",
+          "poll_interval": "So'rov oralig'i (sekundlar)",
+          "gps_poll_interval": "GPS so'rov oralig'i (sekundlar)",
           "smart_gps_polling": "Aqlli GPS so'rovi",
           "gps_active_interval": "GPS faol interval (sekundlar)",
           "gps_inactive_interval": "GPS nofaol interval (soniyalar)"
@@ -33,10 +33,10 @@
   "options": {
     "step": {
       "init": {
-        "title": "Ovoz berishni yangilash",
+        "title": "So'rovni yangilash",
         "data": {
-          "poll_interval": "Ovoz berish oralig'i (sekundlar)",
-          "gps_poll_interval": "GPS ovoz berish oralig'i (sekundlar)",
+          "poll_interval": "So'rov oralig'i (sekundlar)",
+          "gps_poll_interval": "GPS so'rov oralig'i (sekundlar)",
           "smart_gps_polling": "Aqlli GPS so'rovi",
           "gps_active_interval": "GPS faol interval (sekundlar)",
           "gps_inactive_interval": "GPS nofaol interval (soniyalar)"
@@ -59,7 +59,7 @@
         "name": "Tezlik"
       },
       "temp_in_car": {
-        "name": "Idishning harorati"
+        "name": "Salon harorati"
       },
       "left_front_tire_pressure": {
         "name": "Old chap g'ildirak bosimi"
@@ -95,7 +95,7 @@
         "name": "Batareya quvvati darajasi"
       },
       "ev_endurance": {
-        "name": "EV chidamlilik"
+        "name": "EV masofasi"
       },
       "endurance_mileage_v2": {
         "name": "V2 diapazoni"
@@ -116,16 +116,16 @@
         "name": "Zaryadni kutish holati"
       },
       "full_hour": {
-        "name": "To'liq soatlar"
+        "name": "To'lgunlikkacha soatlar"
       },
       "full_minute": {
-        "name": "To'liq daqiqalar"
+        "name": "To'lgunlikkacha daqiqalar"
       },
       "charge_remaining_hours": {
-        "name": "Qolgan soatlarni zaryadlang"
+        "name": "Qolgan zaryadlash soatlari"
       },
       "charge_remaining_minutes": {
-        "name": "Qolgan daqiqalarni zaryadlang"
+        "name": "Qolgan zaryadlash daqiqalari"
       },
       "booking_charge_state": {
         "name": "Rejalashtirilgan zaryadlash"
@@ -188,7 +188,7 @@
         "name": "ABS ogohlantirish"
       },
       "svs": {
-        "name": "Tez orada xizmat ko'rsatish mashinasi"
+        "name": "Xizmat talab qilinadi"
       },
       "srs": {
         "name": "Havo yostig'i haqida ogohlantirish"
@@ -215,7 +215,7 @@
         "name": "Zaryadlovchining ulanish holati"
       },
       "charging_update_time": {
-        "name": "Oxirgi yangilanish quvvatlanmoqda"
+        "name": "Zaryadlash oxirgi yangilanishi"
       },
       "electricity_consumption": {
         "name": "Elektr energiyasi iste'moli"
@@ -268,7 +268,7 @@
         "name": "Bagaj"
       },
       "sliding_door": {
-        "name": "Sürgülü eshik"
+        "name": "Sirpanma eshik"
       },
       "forehold": {
         "name": "Old bagaj"
@@ -301,7 +301,7 @@
         "name": "Orqa o'ng eshik qulfi"
       },
       "sliding_door_lock": {
-        "name": "Sürgülü eshik qulfi"
+        "name": "Sirpanma eshik qulfi"
       },
       "battery_heat_state": {
         "name": "Batareyani isitish"
@@ -318,7 +318,7 @@
         "name": "Chiroqlar"
       },
       "find_car": {
-        "name": "Avtomobil toping"
+        "name": "Avtomobilni toping"
       },
       "close_windows": {
         "name": "Derazalarni yoping"

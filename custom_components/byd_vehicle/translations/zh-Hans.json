@@ -116,16 +116,16 @@
         "name": "充电等待状态"
       },
       "full_hour": {
-        "name": "满小时"
+        "name": "充满小时数"
       },
       "full_minute": {
-        "name": "分钟即可充满"
+        "name": "充满分钟数"
       },
       "charge_remaining_hours": {
-        "name": "剩余时间充电"
+        "name": "充电剩余小时"
       },
       "charge_remaining_minutes": {
-        "name": "充电剩余分钟数"
+        "name": "充电剩余分钟"
       },
       "booking_charge_state": {
         "name": "预约充电"
@@ -188,7 +188,7 @@
         "name": "ABS 警告"
       },
       "svs": {
-        "name": "服务车很快"
+        "name": "请尽快保养"
       },
       "srs": {
         "name": "安全气囊警告"
@@ -235,7 +235,7 @@
         "name": "在线"
       },
       "is_charging": {
-        "name": "收费"
+        "name": "充电中"
       },
       "is_any_door_open": {
         "name": "门"
@@ -392,10 +392,10 @@
     },
     "switch": {
       "battery_heat": {
-        "name": "电池发热"
+        "name": "电池加热"
       },
       "car_on": {
-        "name": "车开"
+        "name": "车辆启动"
       },
       "steering_wheel_heat": {
         "name": "方向盘加热"

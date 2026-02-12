@@ -33,7 +33,7 @@
   "options": {
     "step": {
       "init": {
-        "title": "Uppdatera omröstning",
+        "title": "Uppdatera polling",
         "data": {
           "poll_interval": "Pollingintervall (sekunder)",
           "gps_poll_interval": "GPS avfrågningsintervall (sekunder)",
@@ -59,7 +59,7 @@
         "name": "Hastighet"
       },
       "temp_in_car": {
-        "name": "Hytttemperatur"
+        "name": "Kupétemperatur"
       },
       "left_front_tire_pressure": {
         "name": "Främre vänster däcktryck"
@@ -74,10 +74,10 @@
         "name": "Höger bakre däcktryck"
       },
       "soc": {
-        "name": "Laddar SOC"
+        "name": "Lade-SOC"
       },
       "time_to_full": {
-        "name": "Dags för full laddning"
+        "name": "Tid till full laddning"
       },
       "total_energy": {
         "name": "Total energiförbrukning"
@@ -95,7 +95,7 @@
         "name": "Batterinivå"
       },
       "ev_endurance": {
-        "name": "EV uthållighet"
+        "name": "EV-räckvidd"
       },
       "endurance_mileage_v2": {
         "name": "Räckvidd V2"
@@ -116,16 +116,16 @@
         "name": "Laddningsväntestatus"
       },
       "full_hour": {
-        "name": "Timmar till fulla"
+        "name": "Timmar till full"
       },
       "full_minute": {
-        "name": "Minuter till fulla"
+        "name": "Minuter till full"
       },
       "charge_remaining_hours": {
-        "name": "Ladda återstående timmar"
+        "name": "Återstående laddtimmar"
       },
       "charge_remaining_minutes": {
-        "name": "Ladda återstående minuter"
+        "name": "Återstående laddminuter"
       },
       "booking_charge_state": {
         "name": "Schemalagd laddning"
@@ -155,7 +155,7 @@
         "name": "Snabbt däckläckage"
       },
       "total_power": {
-        "name": "Total kraft"
+        "name": "Total effekt"
       },
       "nearest_energy_consumption": {
         "name": "Senaste energiförbrukningen"
@@ -188,7 +188,7 @@
         "name": "ABS varning"
       },
       "svs": {
-        "name": "Servicebil snart"
+        "name": "Service krävs snart"
       },
       "srs": {
         "name": "Airbag-varning"
@@ -250,7 +250,7 @@
         "name": "Laddare ansluten"
       },
       "sentry_status": {
-        "name": "Vaktvaktsläge"
+        "name": "Vaktläge"
       },
       "left_front_door": {
         "name": "Främre vänstra dörren"
@@ -315,7 +315,7 @@
     },
     "button": {
       "flash_lights": {
-        "name": "Blixtljus"
+        "name": "Ljustuta"
       },
       "find_car": {
         "name": "Hitta bil"

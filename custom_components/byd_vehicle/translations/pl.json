@@ -33,7 +33,7 @@
   "options": {
     "step": {
       "init": {
-        "title": "Zaktualizuj ankietę",
+        "title": "Aktualizuj odpytywanie",
         "data": {
           "poll_interval": "Interwał odpytywania (sekundy)",
           "gps_poll_interval": "GPS interwał odpytywania (sekundy)",
@@ -50,7 +50,7 @@
         "name": "Poziom baterii"
       },
       "endurance_mileage": {
-        "name": "Zakres"
+        "name": "Zasięg"
       },
       "total_mileage": {
         "name": "Drogomierz"
@@ -95,7 +95,7 @@
         "name": "Poziom naładowania baterii"
       },
       "ev_endurance": {
-        "name": "EV wytrzymałość"
+        "name": "Zasięg EV"
       },
       "endurance_mileage_v2": {
         "name": "Zasięg V2"
@@ -116,16 +116,16 @@
         "name": "Stan oczekiwania na ładowanie"
       },
       "full_hour": {
-        "name": "Pełne godziny"
+        "name": "Godziny do pełnej"
       },
       "full_minute": {
-        "name": "Minuty do końca"
+        "name": "Minuty do pełnej"
       },
       "charge_remaining_hours": {
-        "name": "Naładuj pozostałe godziny"
+        "name": "Pozostałe godziny ładowania"
       },
       "charge_remaining_minutes": {
-        "name": "Naładuj pozostałe minuty"
+        "name": "Pozostałe minuty ładowania"
       },
       "booking_charge_state": {
         "name": "Zaplanowane ładowanie"
@@ -185,10 +185,10 @@
         "name": "Stabilność elektroniczna"
       },
       "abs_warning": {
-        "name": "ABS ostrzeżenie"
+        "name": "Ostrzeżenie ABS"
       },
       "svs": {
-        "name": "Wkrótce pojazd serwisowy"
+        "name": "Wymagany serwis"
       },
       "srs": {
         "name": "Ostrzeżenie o poduszce powietrznej"
@@ -206,7 +206,7 @@
         "name": "System zasilania"
       },
       "upgrade_status": {
-        "name": "OTA stan aktualizacji"
+        "name": "Stan aktualizacji OTA"
       },
       "charger_state": {
         "name": "Stan ładowarki"
@@ -215,7 +215,7 @@
         "name": "Stan połączenia ładowarki"
       },
       "charging_update_time": {
-        "name": "Ładowanie ostatniej aktualizacji"
+        "name": "Ostatnia aktualizacja ładowania"
       },
       "electricity_consumption": {
         "name": "Zużycie energii elektrycznej"
@@ -307,7 +307,7 @@
         "name": "Ogrzewanie akumulatora"
       },
       "charge_heat_state": {
-        "name": "Ogrzewanie ładunku"
+        "name": "Ogrzewanie ładowania"
       },
       "vehicle_state": {
         "name": "Pojazd włączony"
@@ -315,7 +315,7 @@
     },
     "button": {
       "flash_lights": {
-        "name": "Lampy błyskowe"
+        "name": "Sygnał świetlny"
       },
       "find_car": {
         "name": "Znajdź samochód"

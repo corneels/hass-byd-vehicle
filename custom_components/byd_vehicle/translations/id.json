@@ -6,13 +6,13 @@
         "description": "Siapkan akun BYD Anda.",
         "data": {
           "base_url": "Wilayah",
-          "username": "Nama belakang",
+          "username": "Nama pengguna",
           "password": "Kata sandi",
           "control_pin": "Kontrol PIN (opsional, 6 digit)",
           "country_code": "Negara",
-          "poll_interval": "Interval pemungutan suara (detik)",
-          "gps_poll_interval": "GPS interval pemungutan suara (detik)",
-          "smart_gps_polling": "Jajak pendapat GPS yang cerdas",
+          "poll_interval": "Interval polling (detik)",
+          "gps_poll_interval": "GPS interval polling (detik)",
+          "smart_gps_polling": "Polling GPS cerdas",
           "gps_active_interval": "GPS interval aktif (detik)",
           "gps_inactive_interval": "GPS interval tidak aktif (detik)"
         }
@@ -20,7 +20,7 @@
     },
     "error": {
       "cannot_connect": "Gagal terhubung",
-      "invalid_control_pin": "Kontrol tidak valid PIN atau kontrol cloud dikunci sementara",
+      "invalid_control_pin": "PIN kontrol tidak valid atau kontrol cloud dikunci sementara",
       "invalid_auth": "Otentikasi tidak valid",
       "unknown": "Kesalahan yang tidak terduga"
     },
@@ -33,11 +33,11 @@
   "options": {
     "step": {
       "init": {
-        "title": "Perbarui jajak pendapat",
+        "title": "Perbarui polling",
         "data": {
-          "poll_interval": "Interval pemungutan suara (detik)",
-          "gps_poll_interval": "GPS interval pemungutan suara (detik)",
-          "smart_gps_polling": "Jajak pendapat GPS yang cerdas",
+          "poll_interval": "Interval polling (detik)",
+          "gps_poll_interval": "GPS interval polling (detik)",
+          "smart_gps_polling": "Polling GPS cerdas",
           "gps_active_interval": "GPS interval aktif (detik)",
           "gps_inactive_interval": "GPS interval tidak aktif (detik)"
         }
@@ -95,7 +95,7 @@
         "name": "Tingkat daya baterai"
       },
       "ev_endurance": {
-        "name": "EV daya tahan"
+        "name": "Jangkauan EV"
       },
       "endurance_mileage_v2": {
         "name": "Rentang V2"
@@ -116,16 +116,16 @@
         "name": "Status tunggu pengisian daya"
       },
       "full_hour": {
-        "name": "Berjam-jam sampai penuh"
+        "name": "Jam hingga penuh"
       },
       "full_minute": {
-        "name": "Beberapa menit sampai penuh"
+        "name": "Menit hingga penuh"
       },
       "charge_remaining_hours": {
-        "name": "Isi daya jam yang tersisa"
+        "name": "Sisa jam pengisian"
       },
       "charge_remaining_minutes": {
-        "name": "Isi daya menit yang tersisa"
+        "name": "Sisa menit pengisian"
       },
       "booking_charge_state": {
         "name": "Pengisian terjadwal"
@@ -149,13 +149,13 @@
         "name": "Status ban kanan belakang"
       },
       "tirepressure_system": {
-        "name": "TPMS negara bagian"
+        "name": "Status TPMS"
       },
       "rapid_tire_leak": {
         "name": "Kebocoran ban yang cepat"
       },
       "total_power": {
-        "name": "Kekuatan total"
+        "name": "Daya total"
       },
       "nearest_energy_consumption": {
         "name": "Konsumsi energi terkini"
@@ -185,10 +185,10 @@
         "name": "Stabilitas elektronik"
       },
       "abs_warning": {
-        "name": "ABS peringatan"
+        "name": "Peringatan ABS"
       },
       "svs": {
-        "name": "Kendaraan servis segera"
+        "name": "Servis diperlukan segera"
       },
       "srs": {
         "name": "Peringatan kantung udara"
@@ -200,13 +200,13 @@
         "name": "Suhu pendingin"
       },
       "pwr": {
-        "name": "Peringatan kekuatan"
+        "name": "Peringatan daya"
       },
       "power_system": {
         "name": "Sistem tenaga"
       },
       "upgrade_status": {
-        "name": "OTA status peningkatan"
+        "name": "Status peningkatan OTA"
       },
       "charger_state": {
         "name": "Status pengisi daya"
@@ -215,7 +215,7 @@
         "name": "Status koneksi pengisi daya"
       },
       "charging_update_time": {
-        "name": "Mengisi pembaruan terakhir"
+        "name": "Pembaruan pengisian terakhir"
       },
       "electricity_consumption": {
         "name": "Konsumsi listrik"
@@ -241,7 +241,7 @@
         "name": "Pintu"
       },
       "is_any_window_open": {
-        "name": "jendela"
+        "name": "Jendela"
       },
       "is_locked": {
         "name": "Terkunci"
@@ -286,7 +286,7 @@
         "name": "Jendela kanan belakang"
       },
       "skylight": {
-        "name": "jendela atap"
+        "name": "Atap kaca"
       },
       "left_front_door_lock": {
         "name": "Kunci pintu kiri depan"
@@ -307,7 +307,7 @@
         "name": "Pemanasan baterai"
       },
       "charge_heat_state": {
-        "name": "Mengisi daya pemanas"
+        "name": "Pemanasan pengisian"
       },
       "vehicle_state": {
         "name": "Kendaraan menyala"
@@ -392,7 +392,7 @@
     },
     "switch": {
       "battery_heat": {
-        "name": "Baterai panas"
+        "name": "Pemanasan baterai"
       },
       "car_on": {
         "name": "Mobil menyala"

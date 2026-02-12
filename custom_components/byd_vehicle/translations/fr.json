@@ -3,12 +3,12 @@
     "step": {
       "user": {
         "title": "Connectez-vous à BYD",
-        "description": "Créez votre compte BYD.",
+        "description": "Configurez votre compte BYD.",
         "data": {
           "base_url": "Région",
           "username": "Nom d'utilisateur",
           "password": "Mot de passe",
-          "control_pin": "Contrôle PIN (facultatif, 6 chiffres)",
+          "control_pin": "PIN de contrôle (facultatif, 6 chiffres)",
           "country_code": "Pays",
           "poll_interval": "Intervalle d'interrogation (secondes)",
           "gps_poll_interval": "GPS intervalle d'interrogation (secondes)",
@@ -20,7 +20,7 @@
     },
     "error": {
       "cannot_connect": "Échec de la connexion",
-      "invalid_control_pin": "Le contrôle invalide PIN ou le contrôle cloud est temporairement verrouillé",
+      "invalid_control_pin": "PIN de contrôle invalide ou le contrôle cloud est temporairement verrouillé",
       "invalid_auth": "Authentification invalide",
       "unknown": "Erreur inattendue"
     },
@@ -33,7 +33,7 @@
   "options": {
     "step": {
       "init": {
-        "title": "Mettre à jour le sondage",
+        "title": "Mettre à jour l'interrogation",
         "data": {
           "poll_interval": "Intervalle d'interrogation (secondes)",
           "gps_poll_interval": "GPS intervalle d'interrogation (secondes)",
@@ -113,7 +113,7 @@
         "name": "État de charge"
       },
       "wait_status": {
-        "name": "Statut d'attente de facturation"
+        "name": "Statut d'attente de charge"
       },
       "full_hour": {
         "name": "Heures pour charge complète"
@@ -134,7 +134,7 @@
         "name": "Heure de recharge programmée"
       },
       "booking_charging_minute": {
-        "name": "Minute de facturation programmée"
+        "name": "Minute de charge programmée"
       },
       "left_front_tire_status": {
         "name": "État du pneu avant gauche"
@@ -164,7 +164,7 @@
         "name": "Conso. derniers 50km"
       },
       "oil_endurance": {
-        "name": "Gamme de carburant"
+        "name": "Autonomie carburant"
       },
       "oil_percent": {
         "name": "Niveau de carburant"
@@ -185,7 +185,7 @@
         "name": "Stabilité électronique"
       },
       "abs_warning": {
-        "name": "ABS avertissement"
+        "name": "Avertissement ABS"
       },
       "svs": {
         "name": "Entretien requis bientôt"
@@ -280,10 +280,10 @@
         "name": "Fenêtre avant droite"
       },
       "left_rear_window": {
-        "name": "Lunette arrière gauche"
+        "name": "Vitre arrière gauche"
       },
       "right_rear_window": {
-        "name": "Lunette arrière droite"
+        "name": "Vitre arrière droite"
       },
       "skylight": {
         "name": "Toit ouvrant"
@@ -315,7 +315,7 @@
     },
     "button": {
       "flash_lights": {
-        "name": "Lampes de poche"
+        "name": "Appels de phares"
       },
       "find_car": {
         "name": "Trouver une voiture"

@@ -33,7 +33,7 @@
   "options": {
     "step": {
       "init": {
-        "title": "ポーリングを更新する",
+        "title": "ポーリング設定",
         "data": {
           "poll_interval": "ポーリング間隔 (秒)",
           "gps_poll_interval": "GPS ポーリング間隔 (秒)",
@@ -59,7 +59,7 @@
         "name": "スピード"
       },
       "temp_in_car": {
-        "name": "機内の温度"
+        "name": "車内温度"
       },
       "left_front_tire_pressure": {
         "name": "左前タイヤの空気圧"
@@ -74,7 +74,7 @@
         "name": "右後輪タイヤの空気圧"
       },
       "soc": {
-        "name": "SOC の充電中"
+        "name": "充電 SOC"
       },
       "time_to_full": {
         "name": "フル充電までの時間"
@@ -95,7 +95,7 @@
         "name": "電源バッテリー残量"
       },
       "ev_endurance": {
-        "name": "EV 耐久性"
+        "name": "EV 航続距離"
       },
       "endurance_mileage_v2": {
         "name": "範囲 V2"
@@ -116,16 +116,16 @@
         "name": "充電待ち状態"
       },
       "full_hour": {
-        "name": "満席までの時間"
+        "name": "満充電までの時間"
       },
       "full_minute": {
-        "name": "フルまであと数分"
+        "name": "満充電までの分数"
       },
       "charge_remaining_hours": {
-        "name": "充電残り時間"
+        "name": "残り充電時間"
       },
       "charge_remaining_minutes": {
-        "name": "充電残り分数"
+        "name": "残り充電分数"
       },
       "booking_charge_state": {
         "name": "計画充電"
@@ -182,13 +182,13 @@
         "name": "電動パワーステアリング"
       },
       "esp": {
-        "name": "電気的安定性"
+        "name": "横滑り防止装置"
       },
       "abs_warning": {
         "name": "ABS 警告"
       },
       "svs": {
-        "name": "もうすぐサービス車両"
+        "name": "要点検"
       },
       "srs": {
         "name": "エアバッグ警告"
@@ -215,7 +215,7 @@
         "name": "充電器の接続状態"
       },
       "charging_update_time": {
-        "name": "充電中の最終更新"
+        "name": "充電の最終更新"
       },
       "electricity_consumption": {
         "name": "電力消費量"
@@ -307,7 +307,7 @@
         "name": "バッテリーの加熱"
       },
       "charge_heat_state": {
-        "name": "チャージヒーティング"
+        "name": "充電ヒーティング"
       },
       "vehicle_state": {
         "name": "車両オン"
@@ -315,13 +315,13 @@
     },
     "button": {
       "flash_lights": {
-        "name": "フラッシュライト"
+        "name": "ライトフラッシュ"
       },
       "find_car": {
         "name": "車を探す"
       },
       "close_windows": {
-        "name": "ウィンドウを閉じる"
+        "name": "窓を閉じる"
       }
     },
     "select": {
@@ -395,7 +395,7 @@
         "name": "バッテリーの熱"
       },
       "car_on": {
-        "name": "カーオン"
+        "name": "車両オン"
       },
       "steering_wheel_heat": {
         "name": "ステアリングホイールヒーター"
@@ -407,8 +407,8 @@
         "state_attributes": {
           "preset_mode": {
             "state": {
-              "max_heat": "マックスヒート",
-              "max_cool": "マックスクール"
+              "max_heat": "最大暖房",
+              "max_cool": "最大冷房"
             }
           }
         }

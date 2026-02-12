@@ -10,9 +10,9 @@
           "password": "Kata laluan",
           "control_pin": "Kawalan PIN (pilihan, 6 digit)",
           "country_code": "Negara",
-          "poll_interval": "Selang pengundian (saat)",
-          "gps_poll_interval": "GPS selang pengundian (saat)",
-          "smart_gps_polling": "Undian pintar GPS",
+          "poll_interval": "Selang polling (saat)",
+          "gps_poll_interval": "GPS selang polling (saat)",
+          "smart_gps_polling": "Polling GPS pintar",
           "gps_active_interval": "GPS selang aktif (saat)",
           "gps_inactive_interval": "GPS selang tidak aktif (saat)"
         }
@@ -20,7 +20,7 @@
     },
     "error": {
       "cannot_connect": "Gagal menyambung",
-      "invalid_control_pin": "Kawalan tidak sah PIN atau kawalan awan dikunci buat sementara waktu",
+      "invalid_control_pin": "PIN kawalan tidak sah atau kawalan awan dikunci buat sementara waktu",
       "invalid_auth": "Pengesahan tidak sah",
       "unknown": "Ralat yang tidak dijangka"
     },
@@ -33,11 +33,11 @@
   "options": {
     "step": {
       "init": {
-        "title": "Kemas kini undian",
+        "title": "Kemas kini polling",
         "data": {
-          "poll_interval": "Selang pengundian (saat)",
-          "gps_poll_interval": "GPS selang pengundian (saat)",
-          "smart_gps_polling": "Undian pintar GPS",
+          "poll_interval": "Selang polling (saat)",
+          "gps_poll_interval": "GPS selang polling (saat)",
+          "smart_gps_polling": "Polling GPS pintar",
           "gps_active_interval": "GPS selang aktif (saat)",
           "gps_inactive_interval": "GPS selang tidak aktif (saat)"
         }
@@ -95,7 +95,7 @@
         "name": "Tahap bateri kuasa"
       },
       "ev_endurance": {
-        "name": "EV ketahanan"
+        "name": "Jarak EV"
       },
       "endurance_mileage_v2": {
         "name": "Julat V2"
@@ -116,16 +116,16 @@
         "name": "Caj status menunggu"
       },
       "full_hour": {
-        "name": "Berjam-jam hingga penuh"
+        "name": "Jam sehingga penuh"
       },
       "full_minute": {
         "name": "Minit hingga penuh"
       },
       "charge_remaining_hours": {
-        "name": "Caj baki jam"
+        "name": "Baki jam pengecasan"
       },
       "charge_remaining_minutes": {
-        "name": "Caj baki minit"
+        "name": "Baki minit pengecasan"
       },
       "booking_charge_state": {
         "name": "Pengecasan berjadual"
@@ -149,7 +149,7 @@
         "name": "Status tayar kanan belakang"
       },
       "tirepressure_system": {
-        "name": "TPMS negeri"
+        "name": "Status TPMS"
       },
       "rapid_tire_leak": {
         "name": "Tayar cepat bocor"
@@ -185,7 +185,7 @@
         "name": "Kestabilan elektronik"
       },
       "abs_warning": {
-        "name": "ABS amaran"
+        "name": "Amaran ABS"
       },
       "svs": {
         "name": "Kenderaan servis tidak lama lagi"
@@ -206,7 +206,7 @@
         "name": "Sistem kuasa"
       },
       "upgrade_status": {
-        "name": "OTA status naik taraf"
+        "name": "Status naik taraf OTA"
       },
       "charger_state": {
         "name": "Keadaan pengecas"
@@ -215,7 +215,7 @@
         "name": "Keadaan sambungan pengecas"
       },
       "charging_update_time": {
-        "name": "Mengecas kemas kini terakhir"
+        "name": "Kemas kini pengecasan terakhir"
       },
       "electricity_consumption": {
         "name": "Penggunaan elektrik"
@@ -238,7 +238,7 @@
         "name": "Mengecas"
       },
       "is_any_door_open": {
-        "name": "pintu"
+        "name": "Pintu"
       },
       "is_any_window_open": {
         "name": "Tingkap"
@@ -392,7 +392,7 @@
     },
     "switch": {
       "battery_heat": {
-        "name": "Panas bateri"
+        "name": "Pemanasan bateri"
       },
       "car_on": {
         "name": "Kereta dihidupkan"
@@ -403,7 +403,7 @@
     },
     "climate": {
       "climate": {
-        "name": "iklim",
+        "name": "Iklim",
         "state_attributes": {
           "preset_mode": {
             "state": {

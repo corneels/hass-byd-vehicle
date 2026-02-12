@@ -12,7 +12,7 @@
           "country_code": "ประเทศ",
           "poll_interval": "ช่วงเวลาการโพล (วินาที)",
           "gps_poll_interval": "GPS ช่วงเวลาการโพล (วินาที)",
-          "smart_gps_polling": "การเลือกตั้งอัจฉริยะ GPS",
+          "smart_gps_polling": "โพลลิ่ง GPS อัจฉริยะ",
           "gps_active_interval": "GPS ช่วงเวลาที่ใช้งาน (วินาที)",
           "gps_inactive_interval": "GPS ช่วงเวลาที่ไม่ใช้งาน (วินาที)"
         }
@@ -33,11 +33,11 @@
   "options": {
     "step": {
       "init": {
-        "title": "อัพเดตการเลือกตั้ง",
+        "title": "อัปเดตการโพล",
         "data": {
           "poll_interval": "ช่วงเวลาการโพล (วินาที)",
           "gps_poll_interval": "GPS ช่วงเวลาการโพล (วินาที)",
-          "smart_gps_polling": "การเลือกตั้งอัจฉริยะ GPS",
+          "smart_gps_polling": "โพลลิ่ง GPS อัจฉริยะ",
           "gps_active_interval": "GPS ช่วงเวลาที่ใช้งาน (วินาที)",
           "gps_inactive_interval": "GPS ช่วงเวลาที่ไม่ใช้งาน (วินาที)"
         }
@@ -95,7 +95,7 @@
         "name": "ระดับพลังงานแบตเตอรี่"
       },
       "ev_endurance": {
-        "name": "EV ความอดทน"
+        "name": "ระยะทาง EV"
       },
       "endurance_mileage_v2": {
         "name": "ช่วง V2"
@@ -116,16 +116,16 @@
         "name": "สถานะรอการชาร์จ"
       },
       "full_hour": {
-        "name": "ชั่วโมงให้เต็ม"
+        "name": "ชั่วโมงจนเต็ม"
       },
       "full_minute": {
-        "name": "นาทีให้เต็ม"
+        "name": "นาทีจนเต็ม"
       },
       "charge_remaining_hours": {
-        "name": "ชาร์จชั่วโมงที่เหลือ"
+        "name": "ชั่วโมงชาร์จที่เหลือ"
       },
       "charge_remaining_minutes": {
-        "name": "ชาร์จนาทีที่เหลือ"
+        "name": "นาทีชาร์จที่เหลือ"
       },
       "booking_charge_state": {
         "name": "การชาร์จตามกำหนดเวลา"
@@ -134,7 +134,7 @@
         "name": "ชั่วโมงการชาร์จตามกำหนดเวลา"
       },
       "booking_charging_minute": {
-        "name": "นาทีการเรียกเก็บเงินตามกำหนดเวลา"
+        "name": "นาทีชาร์จตามกำหนดเวลา"
       },
       "left_front_tire_status": {
         "name": "สถานะยางหน้าซ้าย"
@@ -149,7 +149,7 @@
         "name": "สถานะยางด้านหลังขวา"
       },
       "tirepressure_system": {
-        "name": "TPMS สถานะ"
+        "name": "สถานะ TPMS"
       },
       "rapid_tire_leak": {
         "name": "ยางรั่วอย่างรวดเร็ว"
@@ -185,10 +185,10 @@
         "name": "เสถียรภาพทางอิเล็กทรอนิกส์"
       },
       "abs_warning": {
-        "name": "ABS คำเตือน"
+        "name": "คำเตือน ABS"
       },
       "svs": {
-        "name": "รถบริการเร็วๆ นี้"
+        "name": "ต้องเข้ารับบริการเร็วๆ นี้"
       },
       "srs": {
         "name": "คำเตือนถุงลมนิรภัย"
@@ -206,7 +206,7 @@
         "name": "ระบบไฟฟ้า"
       },
       "upgrade_status": {
-        "name": "OTA สถานะการอัพเกรด"
+        "name": "สถานะอัปเกรด OTA"
       },
       "charger_state": {
         "name": "สถานะเครื่องชาร์จ"
@@ -215,7 +215,7 @@
         "name": "สถานะการเชื่อมต่อเครื่องชาร์จ"
       },
       "charging_update_time": {
-        "name": "กำลังชาร์จการอัปเดตครั้งล่าสุด"
+        "name": "การอัปเดตการชาร์จครั้งล่าสุด"
       },
       "electricity_consumption": {
         "name": "ปริมาณการใช้ไฟฟ้า"
@@ -310,7 +310,7 @@
         "name": "ชาร์จความร้อน"
       },
       "vehicle_state": {
-        "name": "รถอยู่"
+        "name": "รถเปิดอยู่"
       }
     },
     "button": {
@@ -395,7 +395,7 @@
         "name": "ความร้อนของแบตเตอรี่"
       },
       "car_on": {
-        "name": "รถติด"
+        "name": "รถเปิดอยู่"
       },
       "steering_wheel_heat": {
         "name": "การทำความร้อนพวงมาลัย"
@@ -408,7 +408,7 @@
           "preset_mode": {
             "state": {
               "max_heat": "ความร้อนสูงสุด",
-              "max_cool": "แม็กซ์ คูล"
+              "max_cool": "ทำความเย็นสูงสุด"
             }
           }
         }

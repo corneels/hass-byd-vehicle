@@ -33,7 +33,7 @@
   "options": {
     "step": {
       "init": {
-        "title": "Anketi güncelle",
+        "title": "Yoklamayı güncelle",
         "data": {
           "poll_interval": "Yoklama aralığı (saniye)",
           "gps_poll_interval": "GPS yoklama aralığı (saniye)",
@@ -95,7 +95,7 @@
         "name": "Güç pil seviyesi"
       },
       "ev_endurance": {
-        "name": "EV dayanıklılık"
+        "name": "EV menzili"
       },
       "endurance_mileage_v2": {
         "name": "Menzil V2"
@@ -116,16 +116,16 @@
         "name": "Şarj bekleme durumu"
       },
       "full_hour": {
-        "name": "Dolunaya kadar saatler"
+        "name": "Doluluk saatleri"
       },
       "full_minute": {
-        "name": "Dolu dakikalar kaldı"
+        "name": "Doluluk dakikaları"
       },
       "charge_remaining_hours": {
-        "name": "Kalan saatleri şarj edin"
+        "name": "Kalan şarj saatleri"
       },
       "charge_remaining_minutes": {
-        "name": "Kalan dakikaları şarj edin"
+        "name": "Kalan şarj dakikaları"
       },
       "booking_charge_state": {
         "name": "Planlı şarj"
@@ -188,7 +188,7 @@
         "name": "ABS uyarısı"
       },
       "svs": {
-        "name": "Servis aracı yakında"
+        "name": "Servis gerekli"
       },
       "srs": {
         "name": "Hava yastığı uyarısı"
@@ -215,7 +215,7 @@
         "name": "Şarj cihazı bağlantı durumu"
       },
       "charging_update_time": {
-        "name": "Son güncellemeyi şarj etme"
+        "name": "Şarj son güncelleme"
       },
       "electricity_consumption": {
         "name": "Elektrik tüketimi"
@@ -315,7 +315,7 @@
     },
     "button": {
       "flash_lights": {
-        "name": "Flaş ışıkları"
+        "name": "Far yakma"
       },
       "find_car": {
         "name": "Araba bul"

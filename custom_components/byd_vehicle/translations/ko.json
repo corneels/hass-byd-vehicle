@@ -59,7 +59,7 @@
         "name": "속도"
       },
       "temp_in_car": {
-        "name": "기내 온도"
+        "name": "실내 온도"
       },
       "left_front_tire_pressure": {
         "name": "앞 좌측 타이어 공기압"
@@ -95,7 +95,7 @@
         "name": "전원 배터리 잔량"
       },
       "ev_endurance": {
-        "name": "EV 지구력"
+        "name": "EV 주행거리"
       },
       "endurance_mileage_v2": {
         "name": "범위 V2"
@@ -122,7 +122,7 @@
         "name": "가득 채울 때까지 분"
       },
       "charge_remaining_hours": {
-        "name": "남은 시간 충전"
+        "name": "충전 남은 시간"
       },
       "charge_remaining_minutes": {
         "name": "충전 남은 시간(분)"
@@ -188,7 +188,7 @@
         "name": "ABS 경고"
       },
       "svs": {
-        "name": "곧 서비스 차량"
+        "name": "점검 필요"
       },
       "srs": {
         "name": "에어백 경고"
@@ -215,7 +215,7 @@
         "name": "충전기 연결 상태"
       },
       "charging_update_time": {
-        "name": "마지막 업데이트 충전 중"
+        "name": "충전 마지막 업데이트"
       },
       "electricity_consumption": {
         "name": "전력 소비"
@@ -241,7 +241,7 @@
         "name": "문"
       },
       "is_any_window_open": {
-        "name": "윈도우"
+        "name": "창문"
       },
       "is_locked": {
         "name": "잠김"
@@ -307,7 +307,7 @@
         "name": "배터리 가열"
       },
       "charge_heat_state": {
-        "name": "난방 충전"
+        "name": "충전 히팅"
       },
       "vehicle_state": {
         "name": "차량 켜짐"
@@ -392,7 +392,7 @@
     },
     "switch": {
       "battery_heat": {
-        "name": "배터리 발열"
+        "name": "배터리 히팅"
       },
       "car_on": {
         "name": "자동차 켜짐"
@@ -407,8 +407,8 @@
         "state_attributes": {
           "preset_mode": {
             "state": {
-              "max_heat": "최대 열",
-              "max_cool": "맥스 쿨"
+              "max_heat": "최대 난방",
+              "max_cool": "최대 냉방"
             }
           }
         }
@@ -416,7 +416,7 @@
     },
     "lock": {
       "lock": {
-        "name": "잠그다"
+        "name": "잠금"
       }
     },
     "device_tracker": {

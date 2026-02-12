@@ -33,7 +33,7 @@
   "options": {
     "step": {
       "init": {
-        "title": "Opdater afstemning",
+        "title": "Opdatér polling",
         "data": {
           "poll_interval": "Polling-interval (sekunder)",
           "gps_poll_interval": "GPS polling-interval (sekunder)",
@@ -95,7 +95,7 @@
         "name": "Strøm batteriniveau"
       },
       "ev_endurance": {
-        "name": "EV udholdenhed"
+        "name": "EV-rækkevidde"
       },
       "endurance_mileage_v2": {
         "name": "Rækkevidde V2"
@@ -119,13 +119,13 @@
         "name": "Timer til fuld"
       },
       "full_minute": {
-        "name": "Minutter til fulde"
+        "name": "Minutter til fuld"
       },
       "charge_remaining_hours": {
-        "name": "Oplad resterende timer"
+        "name": "Resterende ladetimer"
       },
       "charge_remaining_minutes": {
-        "name": "Oplad resterende minutter"
+        "name": "Resterende lademinutter"
       },
       "booking_charge_state": {
         "name": "Planlagt opladning"
@@ -188,7 +188,7 @@
         "name": "ABS advarsel"
       },
       "svs": {
-        "name": "Servicebil snart"
+        "name": "Service påkrævet snart"
       },
       "srs": {
         "name": "Airbag advarsel"
@@ -286,7 +286,7 @@
         "name": "Højre bagrude"
       },
       "skylight": {
-        "name": "Ovenlysvindue"
+        "name": "Soltag"
       },
       "left_front_door_lock": {
         "name": "Forreste venstre dørlås"
@@ -295,7 +295,7 @@
         "name": "Forreste højre dørlås"
       },
       "left_rear_door_lock": {
-        "name": "Lås venstre bagdør"
+        "name": "Venstre bagdørlås"
       },
       "right_rear_door_lock": {
         "name": "Bageste højre dørlås"
@@ -315,7 +315,7 @@
     },
     "button": {
       "flash_lights": {
-        "name": "Blitzlys"
+        "name": "Lyshorn"
       },
       "find_car": {
         "name": "Find bil"

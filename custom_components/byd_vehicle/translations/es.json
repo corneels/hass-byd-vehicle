@@ -20,9 +20,9 @@
     },
     "error": {
       "cannot_connect": "No se pudo conectar",
-      "invalid_control_pin": "Control no válido PIN o el control de la nube está bloqueado temporalmente",
+      "invalid_control_pin": "PIN de control no válido o el control en la nube está bloqueado temporalmente",
       "invalid_auth": "Autenticación no válida",
-      "unknown": "error inesperado"
+      "unknown": "Error inesperado"
     },
     "abort": {
       "already_configured": "Esta cuenta ya está configurada",
@@ -33,7 +33,7 @@
   "options": {
     "step": {
       "init": {
-        "title": "Actualizar encuesta",
+        "title": "Actualizar sondeo",
         "data": {
           "poll_interval": "Intervalo de sondeo (segundos)",
           "gps_poll_interval": "GPS intervalo de sondeo (segundos)",
@@ -77,7 +77,7 @@
         "name": "Nivel de carga (SoC)"
       },
       "time_to_full": {
-        "name": "Es hora de cargar por completo"
+        "name": "Tiempo de carga completa"
       },
       "total_energy": {
         "name": "Consumo total de energía"
@@ -149,7 +149,7 @@
         "name": "Estado del neumático trasero derecho"
       },
       "tirepressure_system": {
-        "name": "TPMS estado"
+        "name": "Estado TPMS"
       },
       "rapid_tire_leak": {
         "name": "Fuga rápida de neumáticos"
@@ -185,7 +185,7 @@
         "name": "Estabilidad electrónica"
       },
       "abs_warning": {
-        "name": "ABS advertencia"
+        "name": "Advertencia ABS"
       },
       "svs": {
         "name": "Servicio requerido pronto"
@@ -206,7 +206,7 @@
         "name": "Sistema de energía"
       },
       "upgrade_status": {
-        "name": "OTA estado de actualización"
+        "name": "Estado de actualización OTA"
       },
       "charger_state": {
         "name": "Estado del cargador"
@@ -227,7 +227,7 @@
         "name": "Refrigerador"
       },
       "refrigerator_door_state": {
-        "name": "puerta del refrigerador"
+        "name": "Puerta del refrigerador"
       }
     },
     "binary_sensor": {
@@ -253,10 +253,10 @@
         "name": "Modo centinela"
       },
       "left_front_door": {
-        "name": "puerta delantera izquierda"
+        "name": "Puerta delantera izquierda"
       },
       "right_front_door": {
-        "name": "puerta delantera derecha"
+        "name": "Puerta delantera derecha"
       },
       "left_rear_door": {
         "name": "Puerta trasera izquierda"
@@ -274,16 +274,16 @@
         "name": "Frunk"
       },
       "left_front_window": {
-        "name": "ventana delantera izquierda"
+        "name": "Ventana delantera izquierda"
       },
       "right_front_window": {
-        "name": "ventana delantera derecha"
+        "name": "Ventana delantera derecha"
       },
       "left_rear_window": {
-        "name": "ventana trasera izquierda"
+        "name": "Ventana trasera izquierda"
       },
       "right_rear_window": {
-        "name": "ventana trasera derecha"
+        "name": "Ventana trasera derecha"
       },
       "skylight": {
         "name": "Techo solar"
@@ -315,13 +315,13 @@
     },
     "button": {
       "flash_lights": {
-        "name": "luces de destello"
+        "name": "Luces de destello"
       },
       "find_car": {
-        "name": "encontrar auto"
+        "name": "Encontrar auto"
       },
       "close_windows": {
-        "name": "cerrar ventanas"
+        "name": "Cerrar ventanas"
       }
     },
     "select": {

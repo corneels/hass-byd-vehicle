@@ -8,11 +8,11 @@
           "base_url": "Região",
           "username": "Nome de usuário",
           "password": "Senha",
-          "control_pin": "Controle PIN (opcional, 6 dígitos)",
+          "control_pin": "PIN de controle (opcional, 6 dígitos)",
           "country_code": "País",
-          "poll_interval": "Intervalo de pesquisa (segundos)",
-          "gps_poll_interval": "GPS intervalo de pesquisa (segundos)",
-          "smart_gps_polling": "Pesquisa inteligente GPS",
+          "poll_interval": "Intervalo de consulta (segundos)",
+          "gps_poll_interval": "GPS intervalo de consulta (segundos)",
+          "smart_gps_polling": "Consulta GPS inteligente",
           "gps_active_interval": "GPS intervalo ativo (segundos)",
           "gps_inactive_interval": "GPS intervalo inativo (segundos)"
         }
@@ -20,7 +20,7 @@
     },
     "error": {
       "cannot_connect": "Falha ao conectar",
-      "invalid_control_pin": "Controle inválido PIN ou controle de nuvem está temporariamente bloqueado",
+      "invalid_control_pin": "PIN de controle inválido ou controle de nuvem está temporariamente bloqueado",
       "invalid_auth": "Autenticação inválida",
       "unknown": "Erro inesperado"
     },
@@ -33,11 +33,11 @@
   "options": {
     "step": {
       "init": {
-        "title": "Atualizar pesquisa",
+        "title": "Atualizar consulta",
         "data": {
-          "poll_interval": "Intervalo de pesquisa (segundos)",
-          "gps_poll_interval": "GPS intervalo de pesquisa (segundos)",
-          "smart_gps_polling": "Pesquisa inteligente GPS",
+          "poll_interval": "Intervalo de consulta (segundos)",
+          "gps_poll_interval": "GPS intervalo de consulta (segundos)",
+          "smart_gps_polling": "Consulta GPS inteligente",
           "gps_active_interval": "GPS intervalo ativo (segundos)",
           "gps_inactive_interval": "GPS intervalo inativo (segundos)"
         }
@@ -77,7 +77,7 @@
         "name": "Nível de carga (SoC)"
       },
       "time_to_full": {
-        "name": "Hora de carregar totalmente"
+        "name": "Tempo de carga completa"
       },
       "total_energy": {
         "name": "Consumo total de energia"
@@ -113,7 +113,7 @@
         "name": "Estado de carga"
       },
       "wait_status": {
-        "name": "Status de espera de cobrança"
+        "name": "Status de espera de carga"
       },
       "full_hour": {
         "name": "Horas para carga completa"
@@ -149,7 +149,7 @@
         "name": "Estado do pneu traseiro direito"
       },
       "tirepressure_system": {
-        "name": "TPMS estado"
+        "name": "Estado TPMS"
       },
       "rapid_tire_leak": {
         "name": "Vazamento rápido de pneu"
@@ -185,7 +185,7 @@
         "name": "Estabilidade eletrônica"
       },
       "abs_warning": {
-        "name": "ABS aviso"
+        "name": "Aviso ABS"
       },
       "svs": {
         "name": "Manutenção necessária em breve"
@@ -206,7 +206,7 @@
         "name": "Sistema de energia"
       },
       "upgrade_status": {
-        "name": "OTA status de atualização"
+        "name": "Status de atualização OTA"
       },
       "charger_state": {
         "name": "Estado do carregador"
@@ -232,7 +232,7 @@
     },
     "binary_sensor": {
       "is_online": {
-        "name": "On-line"
+        "name": "Online"
       },
       "is_charging": {
         "name": "Carregando"
