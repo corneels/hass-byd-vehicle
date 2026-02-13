@@ -54,7 +54,7 @@ from .const import (
     MIN_GPS_POLL_INTERVAL,
     MIN_POLL_INTERVAL,
 )
-from .device_fingerprint import generate_device_profile
+from .device_fingerprint import async_generate_device_profile
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -247,9 +247,12 @@ class BydVehicleConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):  # type: i
                     self._abort_if_unique_id_mismatch(reason="wrong_account")
 
                     existing_device_profile = self._reauth_entry.data.get(
-                        CONF_DEVICE_PROFILE,
-                        generate_device_profile(),
+                        CONF_DEVICE_PROFILE
                     )
+                    if existing_device_profile is None:
+                        existing_device_profile = await async_generate_device_profile(
+                            self.hass
+                        )
                     updated_data = {
                         **self._reauth_entry.data,
                         "username": user_input["username"],
@@ -291,7 +294,9 @@ class BydVehicleConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):  # type: i
                         CONF_BASE_URL: base_url,
                         CONF_COUNTRY_CODE: country_code,
                         CONF_LANGUAGE: language,
-                        CONF_DEVICE_PROFILE: generate_device_profile(),
+                        CONF_DEVICE_PROFILE: await async_generate_device_profile(
+                            self.hass
+                        ),
                         CONF_CONTROL_PIN: user_input.get(CONF_CONTROL_PIN, ""),
                     },
                     options={

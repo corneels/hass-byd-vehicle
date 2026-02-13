@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import logging
 from dataclasses import dataclass
 from typing import Any
 
@@ -12,9 +13,12 @@ from homeassistant.exceptions import HomeAssistantError
 from homeassistant.helpers.entity import DeviceInfo
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
+from pybyd import BydRemoteControlError
 
 from .const import DOMAIN
 from .coordinator import BydApi, BydDataUpdateCoordinator, get_vehicle_display
+
+_LOGGER = logging.getLogger(__name__)
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -114,6 +118,14 @@ class BydButton(CoordinatorEntity, ButtonEntity):
 
         try:
             await self._api.async_call(_call, vin=self._vin, command=method_name)
+        except BydRemoteControlError as exc:
+            _LOGGER.warning(
+                "Button command %s sent but cloud reported failure — "
+                "assuming optimistic outcome: %s",
+                method_name,
+                exc,
+            )
+            return
         except Exception as exc:  # noqa: BLE001
             raise HomeAssistantError(str(exc)) from exc
 

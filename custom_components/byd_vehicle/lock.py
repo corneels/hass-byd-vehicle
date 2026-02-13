@@ -21,16 +21,6 @@ from .coordinator import BydApi, BydDataUpdateCoordinator, get_vehicle_display
 _LOGGER = logging.getLogger(__name__)
 
 
-def _is_remote_control_failure(exc: BaseException) -> bool:
-    """Return True if *exc* wraps a BydRemoteControlError."""
-    current: BaseException | None = exc
-    while current is not None:
-        if isinstance(current, BydRemoteControlError):
-            return True
-        current = current.__cause__
-    return False
-
-
 async def async_setup_entry(
     hass: HomeAssistant,
     entry: ConfigEntry,
@@ -125,15 +115,15 @@ class BydLock(CoordinatorEntity, LockEntity):
             self._last_command = "lock"
             self._last_locked = True
             await self._api.async_call(_call, vin=self._vin, command=self._last_command)
-        except Exception as exc:  # noqa: BLE001
-            if not _is_remote_control_failure(exc):
-                self._last_locked = None
-                raise HomeAssistantError(str(exc)) from exc
+        except BydRemoteControlError as exc:
             _LOGGER.warning(
                 "Lock command sent but cloud reported failure — "
                 "updating state optimistically: %s",
                 exc,
             )
+        except Exception as exc:  # noqa: BLE001
+            self._last_locked = None
+            raise HomeAssistantError(str(exc)) from exc
         self._command_pending = True
         self.async_write_ha_state()
 
@@ -145,15 +135,15 @@ class BydLock(CoordinatorEntity, LockEntity):
             self._last_command = "unlock"
             self._last_locked = False
             await self._api.async_call(_call, vin=self._vin, command=self._last_command)
-        except Exception as exc:  # noqa: BLE001
-            if not _is_remote_control_failure(exc):
-                self._last_locked = None
-                raise HomeAssistantError(str(exc)) from exc
+        except BydRemoteControlError as exc:
             _LOGGER.warning(
                 "Unlock command sent but cloud reported failure — "
                 "updating state optimistically: %s",
                 exc,
             )
+        except Exception as exc:  # noqa: BLE001
+            self._last_locked = None
+            raise HomeAssistantError(str(exc)) from exc
         self._command_pending = True
         self.async_write_ha_state()
 

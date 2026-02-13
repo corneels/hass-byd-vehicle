@@ -5,7 +5,10 @@ from __future__ import annotations
 import hashlib
 import json
 import random
+from functools import lru_cache
 from pathlib import Path
+
+from homeassistant.core import HomeAssistant
 
 _POOL_FILE = Path(__file__).parent / "device_pool.json"
 
@@ -46,6 +49,7 @@ def _generate_mac() -> str:
     return ":".join(f"{b:02x}" for b in octets)
 
 
+@lru_cache(maxsize=1)
 def _load_device_pool() -> list[dict]:
     """Load the curated device pool from the JSON file."""
     with _POOL_FILE.open(encoding="utf-8") as f:
@@ -88,3 +92,8 @@ def generate_device_profile() -> dict[str, str]:
         "os_type": os_type,
         "os_version": sdk,
     }
+
+
+async def async_generate_device_profile(hass: HomeAssistant) -> dict[str, str]:
+    """Generate a device profile without blocking the event loop."""
+    return await hass.async_add_executor_job(generate_device_profile)

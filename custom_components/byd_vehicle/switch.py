@@ -22,16 +22,6 @@ from .select import _gather_seat_climate_state
 _LOGGER = logging.getLogger(__name__)
 
 
-def _is_remote_control_failure(exc: BaseException) -> bool:
-    """Return True if *exc* wraps a BydRemoteControlError."""
-    current: BaseException | None = exc
-    while current is not None:
-        if isinstance(current, BydRemoteControlError):
-            return True
-        current = current.__cause__
-    return False
-
-
 async def async_setup_entry(
     hass: HomeAssistant,
     entry: ConfigEntry,
@@ -117,15 +107,15 @@ class BydBatteryHeatSwitch(CoordinatorEntity, SwitchEntity):
         try:
             self._last_state = True
             await self._api.async_call(_call, vin=self._vin, command="battery_heat_on")
-        except Exception as exc:  # noqa: BLE001
-            if not _is_remote_control_failure(exc):
-                self._last_state = None
-                raise HomeAssistantError(str(exc)) from exc
+        except BydRemoteControlError as exc:
             _LOGGER.warning(
                 "Battery heat on command sent but cloud reported failure — "
                 "updating state optimistically: %s",
                 exc,
             )
+        except Exception as exc:  # noqa: BLE001
+            self._last_state = None
+            raise HomeAssistantError(str(exc)) from exc
         self._command_pending = True
         self.async_write_ha_state()
 
@@ -138,15 +128,15 @@ class BydBatteryHeatSwitch(CoordinatorEntity, SwitchEntity):
         try:
             self._last_state = False
             await self._api.async_call(_call, vin=self._vin, command="battery_heat_off")
-        except Exception as exc:  # noqa: BLE001
-            if not _is_remote_control_failure(exc):
-                self._last_state = None
-                raise HomeAssistantError(str(exc)) from exc
+        except BydRemoteControlError as exc:
             _LOGGER.warning(
                 "Battery heat off command sent but cloud reported failure — "
                 "updating state optimistically: %s",
                 exc,
             )
+        except Exception as exc:  # noqa: BLE001
+            self._last_state = None
+            raise HomeAssistantError(str(exc)) from exc
         self._command_pending = True
         self.async_write_ha_state()
 
@@ -243,15 +233,15 @@ class BydCarOnSwitch(CoordinatorEntity, SwitchEntity):
         try:
             self._last_state = True
             await self._api.async_call(_call, vin=self._vin, command="car_on")
-        except Exception as exc:  # noqa: BLE001
-            if not _is_remote_control_failure(exc):
-                self._last_state = None
-                raise HomeAssistantError(str(exc)) from exc
+        except BydRemoteControlError as exc:
             _LOGGER.warning(
                 "Car-on command sent but cloud reported failure — "
                 "updating state optimistically: %s",
                 exc,
             )
+        except Exception as exc:  # noqa: BLE001
+            self._last_state = None
+            raise HomeAssistantError(str(exc)) from exc
         self._command_pending = True
         self.async_write_ha_state()
 
@@ -264,15 +254,15 @@ class BydCarOnSwitch(CoordinatorEntity, SwitchEntity):
         try:
             self._last_state = False
             await self._api.async_call(_call, vin=self._vin, command="car_off")
-        except Exception as exc:  # noqa: BLE001
-            if not _is_remote_control_failure(exc):
-                self._last_state = None
-                raise HomeAssistantError(str(exc)) from exc
+        except BydRemoteControlError as exc:
             _LOGGER.warning(
                 "Car-off command sent but cloud reported failure — "
                 "updating state optimistically: %s",
                 exc,
             )
+        except Exception as exc:  # noqa: BLE001
+            self._last_state = None
+            raise HomeAssistantError(str(exc)) from exc
         self._command_pending = True
         self.async_write_ha_state()
 
@@ -389,15 +379,15 @@ class BydSteeringWheelHeatSwitch(CoordinatorEntity, SwitchEntity):
         try:
             self._last_state = on
             await self._api.async_call(_call, vin=self._vin, command=cmd)
-        except Exception as exc:  # noqa: BLE001
-            if not _is_remote_control_failure(exc):
-                self._last_state = None
-                raise HomeAssistantError(str(exc)) from exc
+        except BydRemoteControlError as exc:
             _LOGGER.warning(
                 "Steering wheel heat command sent but cloud reported failure — "
                 "updating state optimistically: %s",
                 exc,
             )
+        except Exception as exc:  # noqa: BLE001
+            self._last_state = None
+            raise HomeAssistantError(str(exc)) from exc
         self._command_pending = True
         self.async_write_ha_state()
 

@@ -34,7 +34,7 @@ from .const import (
     PLATFORMS,
 )
 from .coordinator import BydApi, BydDataUpdateCoordinator, BydGpsUpdateCoordinator
-from .device_fingerprint import generate_device_profile
+from .device_fingerprint import async_generate_device_profile
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -56,7 +56,11 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     # Ensure a device fingerprint exists (backfill for pre-existing entries)
     if CONF_DEVICE_PROFILE not in entry.data:
         hass.config_entries.async_update_entry(
-            entry, data={**entry.data, CONF_DEVICE_PROFILE: generate_device_profile()}
+            entry,
+            data={
+                **entry.data,
+                CONF_DEVICE_PROFILE: await async_generate_device_profile(hass),
+            },
         )
 
     session = async_get_clientsession(hass)
