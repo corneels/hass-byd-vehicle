@@ -135,6 +135,22 @@ class BydClimate(CoordinatorEntity, ClimateEntity):
             return self._PRESET_MAX_COOL
         return None
 
+    def _valid_target_temp_c(self, temp_c: float | int | None) -> float | None:
+        if temp_c is None:
+            return None
+        temp_value = float(temp_c)
+        if self._TEMP_MIN_C <= temp_value <= self._TEMP_MAX_C:
+            return temp_value
+        return None
+
+    def _valid_target_scale(self, scale: int | float | None) -> int | None:
+        if scale is None:
+            return None
+        scale_value = int(round(scale))
+        if self._BYD_SCALE_MIN <= scale_value <= self._BYD_SCALE_MAX:
+            return scale_value
+        return None
+
     @property
     def available(self) -> bool:
         """Available when coordinator has data for this vehicle."""
@@ -179,11 +195,13 @@ class BydClimate(CoordinatorEntity, ClimateEntity):
         hvac = self._get_hvac_status()
         if hvac is not None:
             # main_setting_temp_new is already in °C (precise value from API)
-            if hvac.main_setting_temp_new is not None:
-                return hvac.main_setting_temp_new
+            temp_c = self._valid_target_temp_c(hvac.main_setting_temp_new)
+            if temp_c is not None:
+                return temp_c
             # main_setting_temp is a BYD scale value (1-17) that needs conversion
-            if hvac.main_setting_temp is not None:
-                return self._scale_to_celsius(hvac.main_setting_temp)
+            scale = self._valid_target_scale(hvac.main_setting_temp)
+            if scale is not None:
+                return self._scale_to_celsius(scale)
         return self._DEFAULT_TEMP_C
 
     async def async_set_hvac_mode(self, hvac_mode: HVACMode) -> None:
@@ -258,14 +276,14 @@ class BydClimate(CoordinatorEntity, ClimateEntity):
         hvac = self._get_hvac_status()
         if hvac is not None and hvac.is_ac_on:
             # main_setting_temp_new is °C — convert back to scale for preset check
-            if hvac.main_setting_temp_new is not None:
+            temp_c = self._valid_target_temp_c(hvac.main_setting_temp_new)
+            if temp_c is not None:
                 return self._preset_from_scale(
-                    self._celsius_to_scale(hvac.main_setting_temp_new)
+                    self._celsius_to_scale(temp_c)
                 )
+            scale = self._valid_target_scale(hvac.main_setting_temp)
             return self._preset_from_scale(
-                self._celsius_to_scale(hvac.main_setting_temp)
-                if hvac.main_setting_temp is not None
-                else None
+                scale
             )
         if self.hvac_mode != HVACMode.OFF and self._pending_target_temp is not None:
             scale = self._celsius_to_scale(self._pending_target_temp)

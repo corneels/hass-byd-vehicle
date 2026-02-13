@@ -267,3 +267,27 @@ Behavior details:
 - Disabled by default.
 - Captures transport-level API request/response traces.
 - Applies field redaction for common secrets before writing files.
+
+### Debug logging (Home Assistant + pyBYD)
+
+To enable verbose runtime logs from both this integration and the underlying
+`pybyd` library, add this to your Home Assistant `configuration.yaml`:
+
+```yaml
+logger:
+  default: info
+  logs:
+    custom_components.byd_vehicle: debug
+    pybyd: debug
+```
+
+Then restart Home Assistant (or reload YAML configuration for logger settings)
+and reproduce the issue.
+
+Where to view logs:
+
+- **Settings → System → Logs** in Home Assistant UI
+- `home-assistant.log` in your HA config directory
+
+Tip: enable debug logging only while troubleshooting, as it can produce large
+log volumes and may include sensitive vehicle metadata.

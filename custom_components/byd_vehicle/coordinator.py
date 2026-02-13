@@ -8,6 +8,7 @@ import json
 import logging
 from datetime import UTC, datetime, timedelta
 from pathlib import Path
+from time import perf_counter
 from typing import Any
 
 from homeassistant.config_entries import ConfigEntry
@@ -98,6 +99,12 @@ class BydApi:
         # Serialize all BYD cloud calls so telemetry polls and remote
         # commands never overlap (BYD returns 6024 for concurrent ops).
         self._api_lock = asyncio.Lock()
+        _LOGGER.debug(
+            "Initialized BYD API wrapper for entry %s (region=%s, language=%s)",
+            entry.entry_id,
+            entry.data[CONF_BASE_URL],
+            entry.data.get(CONF_LANGUAGE, DEFAULT_LANGUAGE),
+        )
 
     def update_last_transmission(
         self,
@@ -240,6 +247,10 @@ class BydApi:
         expiry transparently — we only manage the transport lifecycle.
         """
         if self._client is None:
+            _LOGGER.debug(
+                "Creating new pyBYD client for entry %s",
+                self._entry.entry_id,
+            )
             self._client = BydClient(
                 self._config,
                 session=self._http_session,
@@ -253,6 +264,10 @@ class BydApi:
     async def _invalidate_client(self) -> None:
         """Tear down the current client so the next call creates a fresh one."""
         if self._client is not None:
+            _LOGGER.debug(
+                "Invalidating pyBYD client for entry %s",
+                self._entry.entry_id,
+            )
             try:
                 await self._client.__aexit__(None, None, None)
             except Exception:  # noqa: BLE001
@@ -276,8 +291,36 @@ class BydApi:
         internally via ``ensure_session()``.  We only need to recreate
         the client on hard transport failures.
         """
+        call_started = perf_counter()
+        _LOGGER.debug(
+            "BYD API call start (entry=%s, vin=%s, command=%s)",
+            self._entry.entry_id,
+            vin[-6:] if vin else "-",
+            command or "-",
+        )
         async with self._api_lock:
-            return await self._async_call_inner(handler, vin=vin, command=command)
+            try:
+                result = await self._async_call_inner(handler, vin=vin, command=command)
+                _LOGGER.debug(
+                    "BYD API call success "
+                    "(entry=%s, vin=%s, command=%s, duration_ms=%.1f)",
+                    self._entry.entry_id,
+                    vin[-6:] if vin else "-",
+                    command or "-",
+                    (perf_counter() - call_started) * 1000,
+                )
+                return result
+            except Exception as exc:  # noqa: BLE001
+                _LOGGER.debug(
+                    "BYD API call failed "
+                    "(entry=%s, vin=%s, command=%s, duration_ms=%.1f, error=%s)",
+                    self._entry.entry_id,
+                    vin[-6:] if vin else "-",
+                    command or "-",
+                    (perf_counter() - call_started) * 1000,
+                    type(exc).__name__,
+                )
+                raise
 
     async def _async_call_inner(
         self,
@@ -404,6 +447,8 @@ class BydDataUpdateCoordinator(DataUpdateCoordinator[dict[str, Any]]):
         self.update_interval = new_interval
 
     async def _async_update_data(self) -> dict[str, Any]:
+        _LOGGER.debug("Telemetry refresh start for VIN %s", self._vin[-6:])
+
         async def _fetch(client: BydClient) -> dict[str, Any]:
             vehicles = await client.get_vehicles()
             vehicle = next(
@@ -475,6 +520,15 @@ class BydDataUpdateCoordinator(DataUpdateCoordinator[dict[str, Any]]):
             charging=data.get("charging", {}).get(self._vin),
         )
         self._adjust_interval()
+        _LOGGER.debug(
+            "Telemetry refresh success for VIN %s "
+            "(realtime=%s, energy=%s, hvac=%s, charging=%s)",
+            self._vin[-6:],
+            self._vin in data.get("realtime", {}),
+            self._vin in data.get("energy", {}),
+            self._vin in data.get("hvac", {}),
+            self._vin in data.get("charging", {}),
+        )
         return data
 
 
@@ -577,6 +631,8 @@ class BydGpsUpdateCoordinator(DataUpdateCoordinator[dict[str, Any]]):
         self._last_smart_state = is_moving
 
     async def _async_update_data(self) -> dict[str, Any]:
+        _LOGGER.debug("GPS refresh start for VIN %s", self._vin[-6:])
+
         async def _fetch(client: BydClient) -> dict[str, Any]:
             vehicles = await client.get_vehicles()
             vehicle = next(
@@ -614,6 +670,13 @@ class BydGpsUpdateCoordinator(DataUpdateCoordinator[dict[str, Any]]):
             gps=data.get("gps", {}).get(self._vin),
         )
         self._adjust_interval(data)
+        _LOGGER.debug(
+            "GPS refresh success for VIN %s (gps=%s, smart_polling=%s, moving=%s)",
+            self._vin[-6:],
+            self._vin in data.get("gps", {}),
+            self._smart_polling,
+            self._last_smart_state,
+        )
         return data
 
 
