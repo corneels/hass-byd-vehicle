@@ -62,7 +62,7 @@ Integration**, and search for **BYD Vehicle**.
 | Smart GPS polling | bool | no | false | When enabled, uses different intervals depending on whether the vehicle is moving. |
 | GPS active interval | int | no | 30 | GPS polling interval in seconds while the vehicle is moving (smart GPS, allowed range: 10-300). |
 | GPS inactive interval | int | no | 600 | GPS polling interval in seconds while the vehicle is parked (smart GPS, allowed range: 60-3600). |
-| Climate duration | int | no | 1 | Climate run duration in minutes for start-climate commands (allowed range: 1-60). |
+| Climate duration | int | no | 10 | Climate run duration in minutes for start-climate commands (allowed range: 1-60). |
 | Debug dump API responses | bool | no | false | When enabled, writes redacted BYD API request/response traces to local JSON files for troubleshooting. |
 
 
