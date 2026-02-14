@@ -15,7 +15,7 @@
           "smart_gps_polling": "Consulta GPS inteligente",
           "gps_active_interval": "GPS intervalo ativo (segundos)",
           "gps_inactive_interval": "GPS intervalo inativo (segundos)",
-          "climate_duration": "Duração do climatizador (time_span)"
+          "climate_duration": "Duração do climatizador (minutos)"
         }
       }
     },
@@ -41,7 +41,7 @@
           "smart_gps_polling": "Consulta GPS inteligente",
           "gps_active_interval": "GPS intervalo ativo (segundos)",
           "gps_inactive_interval": "GPS intervalo inativo (segundos)",
-          "climate_duration": "Duração do climatizador (time_span)"
+          "climate_duration": "Duração do climatizador (minutos)"
         }
       }
     }

@@ -15,7 +15,7 @@
           "smart_gps_polling": "Aqlli GPS so'rovi",
           "gps_active_interval": "GPS faol interval (sekundlar)",
           "gps_inactive_interval": "GPS nofaol interval (soniyalar)",
-          "climate_duration": "Iqlim davomiyligi (time_span)"
+          "climate_duration": "Iqlim davomiyligi (daqiqa)"
         }
       }
     },
@@ -41,7 +41,7 @@
           "smart_gps_polling": "Aqlli GPS so'rovi",
           "gps_active_interval": "GPS faol interval (sekundlar)",
           "gps_inactive_interval": "GPS nofaol interval (soniyalar)",
-          "climate_duration": "Iqlim davomiyligi (time_span)"
+          "climate_duration": "Iqlim davomiyligi (daqiqa)"
         }
       }
     }

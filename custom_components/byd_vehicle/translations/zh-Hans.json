@@ -15,7 +15,7 @@
           "smart_gps_polling": "智能 GPS 轮询",
           "gps_active_interval": "GPS 活动间隔（秒）",
           "gps_inactive_interval": "GPS 非活动间隔（秒）",
-          "climate_duration": "空调持续时间 (time_span)"
+          "climate_duration": "空调持续时间 (分钟)"
         }
       }
     },
@@ -41,7 +41,7 @@
           "smart_gps_polling": "智能 GPS 轮询",
           "gps_active_interval": "GPS 活动间隔（秒）",
           "gps_inactive_interval": "GPS 非活动间隔（秒）",
-          "climate_duration": "空调持续时间 (time_span)"
+          "climate_duration": "空调持续时间 (分钟)"
         }
       }
     }

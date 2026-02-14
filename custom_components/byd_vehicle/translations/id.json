@@ -15,7 +15,7 @@
           "smart_gps_polling": "Polling GPS cerdas",
           "gps_active_interval": "GPS interval aktif (detik)",
           "gps_inactive_interval": "GPS interval tidak aktif (detik)",
-          "climate_duration": "Durasi iklim (time_span)"
+          "climate_duration": "Durasi iklim (menit)"
         }
       }
     },
@@ -41,7 +41,7 @@
           "smart_gps_polling": "Polling GPS cerdas",
           "gps_active_interval": "GPS interval aktif (detik)",
           "gps_inactive_interval": "GPS interval tidak aktif (detik)",
-          "climate_duration": "Durasi iklim (time_span)"
+          "climate_duration": "Durasi iklim (menit)"
         }
       }
     }

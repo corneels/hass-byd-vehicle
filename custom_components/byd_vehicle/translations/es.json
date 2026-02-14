@@ -15,7 +15,7 @@
           "smart_gps_polling": "Sondeo GPS inteligente",
           "gps_active_interval": "GPS intervalo activo (segundos)",
           "gps_inactive_interval": "GPS intervalo inactivo (segundos)",
-          "climate_duration": "Duración de climatización (time_span)"
+          "climate_duration": "Duración de climatización (minutos)"
         }
       }
     },
@@ -41,7 +41,7 @@
           "smart_gps_polling": "Sondeo GPS inteligente",
           "gps_active_interval": "GPS intervalo activo (segundos)",
           "gps_inactive_interval": "GPS intervalo inactivo (segundos)",
-          "climate_duration": "Duración de climatización (time_span)"
+          "climate_duration": "Duración de climatización (minutos)"
         }
       }
     }
